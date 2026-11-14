@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation de concentration du jus</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- Barre de déconnexion -->
+    <div style="text-align: right; margin: 15px 25px;">
+        <a href="/logout"
+           style="
+               display: inline-block;
+               background-color: #176b55;
+               color: white;
+               padding: 10px 20px;
+               text-decoration: none;
+               border-radius: 8px;
+               font-weight: bold;
+           ">
+            Log Out
+        </a>
+    </div>
+
+    <header>
+        <h1>Simulation de concentration du jus</h1>
+        <p>Modélisation et simulation des procédés</p>
+    </header>
+
+    <main>
+        <form action="/calculer" method="post">
+
+            <h2>Paramètres du procédé</h2>
+
+            <label>Débit du jus brut (kg/h)</label>
+            <input type="number" name="m0" value="1000" step="any" required>
+
+            <label>Fraction insoluble</label>
+            <input type="number" name="x0" value="0.02" step="any" required>
+
+            <label>Fraction soluble</label>
+            <input type="number" name="y0" value="0.10" step="any" required>
+
+            <label>Fraction d'eau</label>
+            <input type="number" name="meau" value="0.88" step="any" required>
+
+            <label>Débit des résidus (kg/h)</label>
+            <input type="number" name="mResidus" value="20" step="any" required>
+
+            <label>Débit du jus concentré ajouté (kg/h)</label>
+            <input type="number" name="mR" value="100" step="any" required>
+
+            <label>Fraction soluble du jus ajouté</label>
+            <input type="number" name="xr" value="0.40" step="any" required>
+
+            <label>Capacité calorifique (kJ/kg.K)</label>
+            <input type="number" name="Cp" value="3.8" step="any" required>
+
+            <label>Température initiale (°C)</label>
+            <input type="number" name="T2" value="20" step="any" required>
+
+            <label>Température après chauffage (°C)</label>
+            <input type="number" name="T3" value="80" step="any" required>
+
+            <label>Concentration finale</label>
+            <input type="number" name="x4" value="0.40" step="any" required>
+
+            <label>Température avant refroidissement (°C)</label>
+            <input type="number" name="T4" value="80" step="any" required>
+
+            <label>Température finale (°C)</label>
+            <input type="number" name="T5" value="25" step="any" required>
+
+            <label>Chaleur latente (kJ/kg)</label>
+            <input type="number" name="lambda_v" value="2300" step="any" required>
+
+            <button type="submit">Lancer la simulation</button>
+
+        </form>
+
+        <!-- Historique -->
+        <div style="text-align: center; margin: 25px;">
+            <a href="/historique"
+               style="
+                   display: inline-block;
+                   background-color: #176B87;
+                   color: white;
+                   padding: 12px 25px;
+                   text-decoration: none;
+                   border-radius: 8px;
+                   font-weight: bold;
+               ">
+                Consulter l'historique des simulations
+            </a>
+        </div>
+
+<!-- Chatbot -->
+<div style="text-align: center; margin: 25px;">
+    <a href="/chatbot"
+       style="
+           display: inline-block;
+           background-color: #176b55;
+           color: white;
+           padding: 12px 25px;
+           text-decoration: none;
+           border-radius: 8px;
+           font-weight: bold;
+       ">
+        Assistant virtuel
+    </a>
+</div>
+
+    </main>
+
+</body>
+</html>

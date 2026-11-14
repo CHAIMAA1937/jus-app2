@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Résultats de simulation</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+<h1>TEST - PAGE RESULTATS</h1>
+    <header>
+        <h1>Résultats de simulation</h1>
+        <p>Concentration du jus de fruit</p>
+    </header>
+
+    <main>
+
+        <h2>Résultats des opérations unitaires</h2>
+
+        <table>
+            <tr>
+                <th>Paramètre</th>
+                <th>Résultat</th>
+            </tr>
+
+            <tr>
+                <td>Débit après filtration</td>
+                <td>{{ r.m1 }} kg/h</td>
+            </tr>
+
+            <tr>
+                <td>Fraction soluble après filtration</td>
+                <td>{{ r.y1 }}</td>
+            </tr>
+
+            <tr>
+                <td>Débit après mélange</td>
+                <td>{{ r.m2 }} kg/h</td>
+            </tr>
+
+            <tr>
+                <td>Fraction soluble après mélange</td>
+                <td>{{ r.y2 }}</td>
+            </tr>
+
+            <tr>
+                <td>Puissance de chauffage</td>
+                <td>{{ r.Q3 }} kW</td>
+            </tr>
+
+            <tr>
+                <td>Débit après évaporation</td>
+                <td>{{ r.m4 }} kg/h</td>
+            </tr>
+
+            <tr>
+                <td>Débit d'eau évaporée</td>
+                <td>{{ r.mv }} kg/h</td>
+            </tr>
+
+            <tr>
+                <td>Puissance d'évaporation</td>
+                <td>{{ r.Q4 }} kW</td>
+            </tr>
+
+            <tr>
+                <td>Puissance de refroidissement</td>
+                <td>{{ r.Q5 }} kW</td>
+            </tr>
+        </table>
+
+        <h2>Vérification des bilans matière</h2>
+
+        <table>
+            <tr>
+                <th>Bilan</th>
+                <th>Entrées (kg/h)</th>
+                <th>Sorties (kg/h)</th>
+            </tr>
+
+            <tr>
+                <td>Bilan global</td>
+                <td>{{ r.entrees }}</td>
+                <td>{{ r.sorties }}</td>
+            </tr>
+
+            <tr>
+                <td>Matières solubles</td>
+                <td>{{ r.solubles_entrantes }}</td>
+                <td>{{ r.solubles_sortantes }}</td>
+            </tr>
+        </table>
+
+        <a href="/">
+            <button type="button">Retour aux paramètres</button>
+        </a>
+
+    </main>
+
+</body>
+
+<div style="text-align: right; margin: 15px 25px;">
+    <a href="/logout"
+       style="
+           display: inline-block;
+           background-color: #176b55;
+           color: white;
+           padding: 10px 20px;
+           text-decoration: none;
+           border-radius: 8px;
+           font-weight: bold;
+       ">
+        Log Out
+    </a>
+</div>
+
+</html>

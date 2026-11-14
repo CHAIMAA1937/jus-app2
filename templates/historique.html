@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Historique des simulations</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f3;
+            color: #263b36;
+        }
+
+        /* En-tête */
+        header {
+            background-color: #176b55;
+            color: white;
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 20px;
+        }
+
+        /* Contenu principal */
+        .container {
+            max-width: 1450px;
+            margin: 60px auto;
+            padding: 35px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #176b55;
+            margin-bottom: 25px;
+            font-size: 26px;
+        }
+
+        /* Bouton retour */
+        .actions {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #176f8a;
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 9px;
+            font-size: 17px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #125a70;
+        }
+
+        /* Tableau */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1100px;
+        }
+
+        th {
+            background-color: #176b55;
+            color: white;
+            padding: 16px 12px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 14px 12px;
+            text-align: center;
+            border-bottom: 1px solid #dce5e1;
+            white-space: nowrap;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f0f4f3;
+        }
+
+        tbody tr:hover {
+            background-color: #e1eee8;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 30px;
+            color: #64756e;
+            font-size: 17px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64756e;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 27px;
+            }
+
+            .container {
+                margin: 25px 10px;
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Historique des simulations</h1>
+        <p>Modélisation et simulation des procédés</p>
+    </header>
+
+    <div class="actions">
+
+    <a href="/" class="btn">
+        ← Retour à l'accueil
+    </a>
+
+    <a href="/export-excel" class="btn">
+        Télécharger l'historique en Excel
+    </a>
+
+</div>
+
+        <h2>Historique des calculs</h2>
+
+        {% if calculs %}
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Masse initiale (m0)</th>
+                        <th>Masse (m1)</th>
+                        <th>Masse (m2)</th>
+                        <th>Masse concentrée (m4)</th>
+                        <th>Eau évaporée (mv)</th>
+                        <th>Chaleur Q3</th>
+                        <th>Chaleur Q4</th>
+                        <th>Chaleur Q5</th>
+                        <th>Erreur bilan global</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for c in calculs %}
+                    <tr>
+                        <td>{{ c.id }}</td>
+                        <td>{{ c.date_calcul }}</td>
+                        <td>{{ "%.2f"|format(c.m0) }}</td>
+                        <td>{{ "%.2f"|format(c.m1) }}</td>
+                        <td>{{ "%.2f"|format(c.m2) }}</td>
+                        <td>{{ "%.2f"|format(c.m4) }}</td>
+                        <td>{{ "%.2f"|format(c.mv) }}</td>
+                        <td>{{ "%.2f"|format(c.Q3) }}</td>
+                        <td>{{ "%.2f"|format(c.Q4) }}</td>
+                        <td>{{ "%.2f"|format(c.Q5) }}</td>
+                        <td>{{ "%.4f"|format(c.erreur_bilan_global) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% else %}
+
+        <div class="empty">
+            Aucune simulation enregistrée pour le moment.
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <footer>
+        Application de concentration du jus de fruit
+    </footer>
+
+</body>
+
+<div style="text-align: right; margin: 15px 25px;">
+    <a href="/logout"
+       style="
+           display: inline-block;
+           background-color: #176b55;
+           color: white;
+           padding: 10px 20px;
+           text-decoration: none;
+           border-radius: 8px;
+           font-weight: bold;
+       ">
+        Log Out
+    </a>
+</div>
+
+</html>

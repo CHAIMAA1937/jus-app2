@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Application de concentration du jus</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f4f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 430px;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #176b55;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #176b55;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: #176b55;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #125642;
+        }
+
+        .error {
+            background: #ffe5e5;
+            color: #b00020;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .login-link a {
+            color: #176b55;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Create Account</h1>
+
+        <p class="description">
+            Créez votre compte pour accéder à l'application.
+        </p>
+
+        {% if erreur %}
+            <div class="error">{{ erreur }}</div>
+        {% endif %}
+
+        <form action="/register" method="POST">
+
+            <label for="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Votre nom d'utilisateur"
+                autocomplete="username"
+                required
+            >
+
+            <label for="email">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="exemple@email.com"
+                autocomplete="email"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Créer un mot de passe"
+                autocomplete="new-password"
+                required
+            >
+
+            <label for="confirm_password">Confirm Password</label>
+            <input
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                placeholder="Confirmer le mot de passe"
+                autocomplete="new-password"
+                required
+            >
+
+            <button type="submit">Sign Up</button>
+
+        </form>
+
+        <p class="login-link">
+            Vous avez déjà un compte ?
+            <a href="/login">Sign In</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

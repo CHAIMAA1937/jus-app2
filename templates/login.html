@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign In - Application de concentration du jus</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f4f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 430px;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #176b55;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #176b55;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .remember input {
+            width: auto;
+            margin: 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: #176b55;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #125642;
+        }
+
+        .error {
+            background: #ffe5e5;
+            color: #b00020;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .register-link a {
+            color: #176b55;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Welcome Back</h1>
+
+        <p class="description">
+            Connectez-vous pour accéder à votre application.
+        </p>
+
+        {% if erreur %}
+            <div class="error">{{ erreur }}</div>
+        {% endif %}
+
+        <form action="/login" method="POST">
+
+            <label for="login">Email ou Username</label>
+
+            <input
+                type="text"
+                id="login"
+                name="login"
+                placeholder="Votre email ou nom d'utilisateur"
+                autocomplete="username"
+                required
+            >
+
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Votre mot de passe"
+                autocomplete="current-password"
+                required
+            >
+
+            <div class="remember">
+                <input
+                    type="checkbox"
+                    id="remember_device"
+                    name="remember_device"
+                    value="yes"
+                    checked
+                >
+
+                <label for="remember_device">
+                    Remember this device
+                </label>
+            </div>
+
+            <button type="submit">Sign In</button>
+
+        </form>
+
+        <p class="register-link">
+            Vous n'avez pas encore de compte ?
+            <a href="/register">Sign Up</a>
+        </p>
+
+    </div>
+
+</body>
+</html>
